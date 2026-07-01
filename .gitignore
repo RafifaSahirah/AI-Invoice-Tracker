@@ -1,3 +1,4 @@
 invoice-track-env/
 __pycache__/
 config/credentials.json
+.DS_Store
