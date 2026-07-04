@@ -1,3 +1,5 @@
+fastapi[standard]
 google-genai
 gspread
-google-auth
+pydantic
+python-dotenv
