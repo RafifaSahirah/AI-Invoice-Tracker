@@ -33,6 +33,8 @@ async def extract_invoice(file: UploadFile) -> InvoiceRequest:
     - Use an empty string for date and name.
     - Use iso format for date (YYYY-MM-DD).
     - Use 0 for nominal.
+    
+    Do not return a list. Return exactly one object matching the requested schema.
     """
     
     response = client.models.generate_content(
