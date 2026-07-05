@@ -23,6 +23,6 @@ def save_invoice(invoice_request):
     new_row = [
       invoice_request.date,
       invoice_request.name,
-      invoice_request.nominal
+      invoice_request.amount
     ]
     worksheet.append_row(new_row)

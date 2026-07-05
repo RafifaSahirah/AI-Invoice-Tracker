@@ -5,4 +5,4 @@ from pydantic import BaseModel
 class InvoiceRequest(BaseModel):
   date: str
   name: str
-  nominal: int
+  amount: int

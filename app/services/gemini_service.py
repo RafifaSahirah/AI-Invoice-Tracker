@@ -27,12 +27,12 @@ async def extract_invoice(file: UploadFile) -> InvoiceRequest:
     Extract the following information from this invoice image:
     - date
     - name
-    - nominal
+    - amount
 
     If a field cannot be found:
     - Use an empty string for date and name.
     - Use iso format for date (YYYY-MM-DD).
-    - Use 0 for nominal.
+    - Use 0 for amount.
     
     Do not return a list. Return exactly one object matching the requested schema.
     """
