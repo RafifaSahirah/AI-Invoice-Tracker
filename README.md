@@ -13,7 +13,7 @@
 <!-- --- -->
 
 ## ✨ Key Features
-* **Invoice Extraction:** Upload an invoice image; Gemini‑2.5‑flash‑lite extracts date, name, and amount.
+* **Invoice Extraction:** Upload an invoice image; Gemini‑2.5‑flash‑lite extracts date, reference number, merchant name, and amount.
 * **Google Sheet Integration:** Extracted data is automatically appended to a Google Sheet.
 * **Responsive UI:** Simple HTML/CSS/JS front‑end works on desktop and mobile.
 
