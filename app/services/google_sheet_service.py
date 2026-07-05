@@ -22,6 +22,7 @@ worksheet = sh.sheet1
 def save_invoice(invoice_request):
     new_row = [
       invoice_request.date,
+      invoice_request.reference_number,
       invoice_request.name,
       invoice_request.amount
     ]
