@@ -10,7 +10,6 @@ const dateElement = document.getElementById('date');
 const nameElement = document.getElementById('name');
 const amountElement = document.getElementById('amount');
 
-
 fileInput.addEventListener('change', function (event) {
   const file = event.target.files[0];
   if (file) {
@@ -18,30 +17,28 @@ fileInput.addEventListener('change', function (event) {
     const imageUrl = URL.createObjectURL(file);
     preview.src = imageUrl;
     preview.hidden = false;
-    emptyPreview.hidden = true
-  };
+    emptyPreview.hidden = true;
+  }
 });
 
 uploadForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
   const file = fileInput.files[0];
-  
+
   if (!file) {
-    alert("Please select an invoice image first.")
+    alert('Please select an invoice image first.');
     return;
   }
 
   const formData = new FormData();
   formData.append('file', file);
+
   try {
-    const response = await fetch(
-        'http://127.0.0.1:8000/invoice/process',
-        {
-        method: "POST",
-        body: formData
-        }
-    )
+    const response = await fetch('http://127.0.0.1:8000/invoice/process', {
+      method: 'POST',
+      body: formData,
+    });
     const data = await response.json();
     console.log(data);
   } catch (error) {
