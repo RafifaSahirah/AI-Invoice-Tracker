@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Invoice Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="upload-form">
+    <!-- Upload file area -->
+    <div>
+      <label for="invoice-image">Upload Invoice</label>
+      <input id="invoice-image" type="file" accept="image/*">
+    </div>
+    <!-- Image Preview -->
+    <div>
+      <img id="preview" alt="Invoice Preview" hidden>
+      <p id="empty-preview">No image selected</p>
+    </div>
+    <!-- Upload Button -->
+    <button type="submit">Process Invoice</button>
+  </form>
+  <hr>
+
+  <!-- Ares Status -->
+  <div>
+    <!-- Loading indicator / short status  -->
+    <p id="status">Status: waiting file uploaded...</p>
+
+    <!-- Spinner loading (hidden default use CSS/JS) -->
+    <div id="loading" hidden>
+      <span> Extracting invoice using AI...</span>
+    </div>
+
+    <!-- Result area (JSON) sucessfully from fastapi -->
+    <div>
+      <!-- success spreadsheet notification -->
+      <div id="notification"></div> 
+
+      <h3>Extraction Result</h3>
+      <ul>
+        <li><strong>Date:</strong><span id="date">-</span></li>
+        <li><strong>Name:</strong><span id="name">-</span></li>
+        <li><strong>Amount:</strong><span id="amount">-</span></li>
+      </ul>
+    </div> 
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
