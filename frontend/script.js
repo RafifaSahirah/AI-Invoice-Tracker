@@ -7,6 +7,7 @@ const emptyPreview = document.getElementById('empty-preview');
 const uploadForm = document.getElementById('upload-form');
 
 const dateElement = document.getElementById('date');
+const referenceElement = document.getElementById('reference_number');
 const nameElement = document.getElementById('name');
 const amountElement = document.getElementById('amount');
 
