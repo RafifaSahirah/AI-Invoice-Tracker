@@ -2,7 +2,6 @@
 > A simple web app that extracts invoice data from images using Gemini AI and stores results in Google Sheets.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
 ---
 
