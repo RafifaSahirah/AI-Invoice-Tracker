@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background-color: white;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.invoice-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    border-radius: 12px;
+    border: 0.5px solid #e2e8f0;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+}
+
+.invoice-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;   
+    align-items: center;
+    padding: 2em;
+    border: 2px #d1d5db dashed;
+
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+}
+
+.upload-box:hover {
+    border-color: #309ed1;
+}
+
+.upload-icon {
+    font-size: 48px;
+}
+
+#invoice-image {
+    display: none;
+}
+
+.process-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #309ed1;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.process-button:hover {
+    background-color: #1f87b8;
+}
+
+.process-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.preview-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    min-height: 200px;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    height: auto;
+}
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.status-message {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+#status-icon {
+    font-size: 16px;
+}
+
+#status-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid #dbeafe;
+    border-top-color: #309ed1;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+.invoice-result {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.result-row {
+    display: grid ;
+    grid-template-columns: 160px 1fr;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.result-label {
+    color: gray;
+    font-weight: 500;
+}
+
+.result-value {
+    font-weight: 600;
+}
