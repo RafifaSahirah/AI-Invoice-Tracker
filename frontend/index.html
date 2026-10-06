@@ -4,52 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Invoice Tracker</title>
+
+  <!-- Google Material & Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <form id="upload-form">
-    <!-- Upload file area -->
-    <div>
-      <label for="invoice-image">Upload Invoice</label>
-      <input id="invoice-image" type="file" accept="image/*">
-    </div>
+  <div class="container">
+    <div class="invoice-card">
+      <form class="invoice-form" id="upload-form">
+        <!-- Upload file area -->
+        <div class="upload-group">
+          <label class="upload-box" for="invoice-image">
+            <span class="material-symbols-outlined upload-icon">upload</span>
+            <h3>Upload Invoice</h3>
+            <p id="upload-message">Click to upload invoice</p>
+            <p>JPG • PNG • PDF</p>
+          </label>
+          <input id="invoice-image" type="file" accept="image/*">
+        </div>
 
-    <!-- Image Preview -->
-    <div>
-      <img id="preview" alt="Invoice Preview" hidden>
-      <p id="empty-preview">No image selected</p>
-    </div>
+        <!-- Image Preview -->
+        <div class="preview-container">
+          <img id="preview" class="preview-image" alt="Invoice Preview" hidden>
+          <p id="empty-preview">No image selected</p>
+        </div>
 
-    <!-- Upload Button -->
-    <button type="submit">Process Invoice</button>
-  </form>
+        <!-- Upload Button -->
+        <button id="process" class="process-button" type="submit">Process Invoice</button>
+      </form>
 
-  <hr>
+      <hr>
 
-  <!-- Status Area -->
-  <div>
-    <!-- Loading indicator / short status -->
-    <p id="status">Status: waiting for file upload...</p>
+      <!-- Status Area -->
+      <div class="result-section">
+        <div class="status-message">
+          <span id="status-icon" class="material-symbols-outlined">
+            info
+          </span>
+          <div id="status-spinner" class="loading-spinner" hidden></div>
+          <span id="status-text">
+            Waiting for file upload... 
+          </span>
+        </div>
 
-    <!-- Spinner loading (hidden default use CSS/JS) -->
-    <div id="loading" hidden>
-      <span>Extracting invoice using AI...</span>
-    </div>
+        <!-- Result area (JSON) successfully from fastapi -->
+        <div class="invoice-result">
+          <!-- Success spreadsheet -->
+           <div class="result-row">
+            <span class="result-label">Date</span>
+            <span id="date" class="result-value">-</span>
+           </div>
 
-    <!-- Result area (JSON) successfully from fastapi -->
-    <div>
-      <!-- Success spreadsheet notification -->
-      <div id="notification"></div>
-      <h3>Extraction Result</h3>
-      <ul>
-        <li><strong>Date:</strong><span id="date">-</span></li>
-        <li><strong>Reference Number:</strong><span id="reference_number">-</span></li>
-        <li><strong>Name:</strong><span id="name">-</span></li>
-        <li><strong>Amount:</strong><span id="amount">-</span></li>
-      </ul>
+           <div class="result-row">
+            <span class="result-label">Reference Number</span>
+            <span id="reference_number" class="result-value">-</span>
+           </div>
+
+           <div class="result-row">
+            <span class="result-label">Name</span>
+            <span id="name" class="result-value">-</span>
+           </div>
+
+           <div class="result-row">
+            <span class="result-label">Amount</span>
+            <span id="amount" class="result-value">-</span>
+           </div>
+        </div>
+      </div>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
