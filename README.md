@@ -14,6 +14,7 @@
 ## ✨ Key Features
 * **Invoice Extraction:** Upload an invoice image; Gemini‑2.5‑flash‑lite extracts date, reference number, merchant name, and amount.
 * **Google Sheet Integration:** Extracted data is automatically appended to a Google Sheet.
+* **Invoice Image Storage:** Uploaded invoice images are securely stored using Supabase Storage integration.
 * **Responsive UI:** Simple HTML/CSS/JS front‑end works on desktop and mobile.
 
 ---
@@ -24,7 +25,7 @@
 | **Frontend** | HTML, JavaScript (Fetch API), CSS |
 | **Backend**  | FastAPI (Python), Uvicorn |
 | **AI Service** | Gemini 2.5 Flash Lite (Google GenAI) |
-| **Storage**   | Google Sheets API |
+| **Storage**   | Google Sheets API, Supabase Storage |
 | **DevOps**    | virtualenv |
 
 > **Why choose this stack?**
@@ -38,6 +39,7 @@
 * Python 3.11+ (virtualenv recommended)
 * Node.js (optional, only for serving static files)
 * Google Cloud credentials with `GEMINI_API_KEY` and Sheets API access
+* Supabase Account & Project (with Bucket access for image storage)
 
 ### Installation Steps
 1. **Clone Repository**
@@ -48,7 +50,10 @@
 2. **Create and activate virtual environment**
    ```bash
    python -m venv invoice-track-env
+   # Linux/macOS
    source invoice-track-env/bin/activate
+   # Windows (PowerShell)
+   .\invoice-track-env\Scripts\Activate.ps1
    ```
 3. **Install dependencies**
    ```bash
@@ -56,7 +61,13 @@
    ```
 4. **Configure environment variables**
    - Copy `config/credentials.json.example` to `config/credentials.json` and fill in your Google service‑account JSON.
-   - Set `GEMINI_API_KEY` in your shell or a `.env` file.
+   - Create a `.env` file in the project root and populate the following keys:
+     ```bash
+     GEMINI_API_KEY=your_gemini_api_key
+     SUPABASE_URL=https://your-project-ref.supabase.co
+     SUPABASE_KEY=your_supabase_anon_or_service_role_key
+     SUPABASE_BUCKET_NAME=your_bucket_name
+     ```
 5. **Run the API**
    ```bash
    uvicorn app.main:app --reload
@@ -72,7 +83,7 @@
 AI-Invoice-Tracker/
 ├─ app/                # FastAPI backend
 │  ├─ main.py          # Entry point, defines /invoice/process
-│  ├─ services/        # Gemini AI and Google Sheet integrations
+│  ├─ services/        # Integrations: Gemini AI, Google Sheets, & Supabase
 │  └─ schemas/         # Pydantic models
 ├─ frontend/           # Simple HTML/JS UI
 │  ├─ index.html
