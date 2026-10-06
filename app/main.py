@@ -8,7 +8,8 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from app.services.google_sheet_service import save_invoice
 from app.services.gemini_service import extract_invoice
-from app.schemas.invoice_request import InvoiceRequest
+from app.schemas.invoice_record import InvoiceRecord
+from app.services.storage_service import upload_file
 import os
 
 app = FastAPI()
@@ -32,10 +33,21 @@ def read_root():
 
 @app.post("/invoice/process")
 async def process_invoice(file: UploadFile = File(...)):
+    storage_file = await upload_file(file)
+
     invoice = await extract_invoice(file)
-    save_invoice(invoice)
+
+    invoice_record = InvoiceRecord(
+        date=invoice.date,
+        reference_number=invoice.reference_number,
+        name=invoice.name,
+        amount=invoice.amount,
+        invoice_url=storage_file.url
+    )
+    
+    save_invoice(invoice_record)
 
     return {
         "message": "Invoice extracted and saved successfully",
-        "invoice": invoice 
+        "invoice": invoice_record
     }
