@@ -60,7 +60,7 @@
    pip install -r requirements.txt
    ```
 4. **Configure environment variables**
-   - Copy `config/credentials.json.example` to `config/credentials.json` and fill in your Google service‑account JSON.
+   - Copy `config/credentials.json.example` to `config/credentials.json` and fill in your Google Service Account credentials ([How to get Google Service Account JSON](https://docs.gspread.org/en/latest/oauth2.html#service-account)).
    - Create a `.env` file in the project root and populate the following keys:
      ```bash
      GEMINI_API_KEY=your_gemini_api_key
@@ -68,12 +68,16 @@
      SUPABASE_KEY=your_supabase_anon_or_service_role_key
      SUPABASE_BUCKET_NAME=your_bucket_name
      ```
-5. **Run the API**
+5. **Setup Google Spreadsheet**
+   - Open your personal Google Drive and create a new Google Spreadsheet named **`Pembukuan Otomatis`**.
+   - Open your `config/credentials.json` file and locate the `"client_email"` address (e.g., `your-service-account@project-id.iam.gserviceaccount.com`).
+   - Share the spreadsheet with this `client_email` address and grant it **Editor** permissions.
+6. **Run the API**
    ```bash
    uvicorn app.main:app --reload
    ```
-   The backend will be available at `http://127.0.0.1:8000`.
-6. **Open the frontend**
+   The API will be available at `http://127.0.0.1:8000` (Access interactive docs at `http://127.0.0.1:8000/docs`).
+7. **Open the frontend**
    Open `frontend/index.html` in a browser (or serve it with a simple static server).
 
 ---
